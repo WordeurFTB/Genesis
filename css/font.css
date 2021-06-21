@@ -1,0 +1,70 @@
+/*
+ * Font Family : Tachyon
+ * © 2009-2021 Adobe Systems Incorporated. All Rights Reserved.
+ */
+@import url("https://p.typekit.net/p.css?s=1&k=hke5tpl&ht=tk&f=551.552.553.554&a=55547277&app=typekit&e=css");
+
+@font-face {
+    font-family:"Tachyon";
+    src: url("https://use.typekit.net/af/5faadb/000000000000000077359706/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"), url("https://use.typekit.net/af/5faadb/000000000000000077359706/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"), url("https://use.typekit.net/af/5faadb/000000000000000077359706/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+    font-display: auto; font-style: normal; font-weight: 400;
+}
+
+@font-face {
+    font-family:"Tachyon";
+    src: url("https://use.typekit.net/af/53cd08/000000000000000077359709/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n1&v=3") format("woff2"), url("https://use.typekit.net/af/53cd08/000000000000000077359709/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n1&v=3") format("woff"), url("https://use.typekit.net/af/53cd08/000000000000000077359709/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n1&v=3") format("opentype");
+    font-display: auto; font-style: normal; font-weight: 100;
+}
+
+@font-face {
+    font-family:"Tachyon";
+    src: url("https://use.typekit.net/af/488651/00000000000000007735970c/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3") format("woff2"), url("https://use.typekit.net/af/488651/00000000000000007735970c/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3") format("woff"), url("https://use.typekit.net/af/488651/00000000000000007735970c/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n2&v=3") format("opentype");
+    font-display: auto; font-style: normal; font-weight: 200;
+}
+
+@font-face {
+    font-family:"Tachyon";
+    src: url("https://use.typekit.net/af/553864/00000000000000007735970e/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff2"), url("https://use.typekit.net/af/553864/00000000000000007735970e/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff"), url("https://use.typekit.net/af/553864/00000000000000007735970e/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("opentype");
+    font-display: auto; font-style: normal; font-weight: 300;
+}
+
+.ft-tachyon { font-family: "Tachyon", sans-serif; }
+
+/*
+ * Font Family : Metropolis
+ */
+
+@font-face {
+    font-family: "Metropolis";
+    src: url("../font/Metropolis/Metropolis-Light.ttf") format('truetype');
+    font-display: auto; font-style: normal; font-weight: 300;
+}
+
+@font-face {
+    font-family: "Metropolis";
+    src: url("../font/Metropolis/Metropolis-Medium.ttf") format('truetype');
+    font-display: auto; font-style: normal; font-weight: 500;
+}
+
+@font-face {
+    font-family: "Metropolis";
+    src: url("../font/Metropolis/Metropolis-Bold.ttf") format('truetype');
+    font-display: auto; font-style: normal; font-weight: 700;
+}
+
+.ft-metropolis { font-family: "Metropolis", sans-serif; }
+
+html {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Rendre la ScrollBar non visible */
+::-webkit-scrollbar {
+    display: none;
+}

@@ -1,0 +1,66 @@
+@import url("./font.css");
+
+html {
+    background-color: #14182D;
+    background-size: 100% auto;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.title-logo {
+    width: 15%;
+    height: 15%;
+    margin-top: 7%;
+}
+
+.title {
+    position: absolute;
+    color: white;
+    font-size: 500%;
+    top: 10%;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+
+.form {
+    margin-top: 20%;
+}
+
+.form .field {
+    color: white;
+    font-size: 200%;
+}
+
+.form input[type=text], .form input[type=password] {
+    font-family: "Metropolis";
+    font-size: 150%;
+    margin-top: 0.5em;
+    text-align: center;
+    border-radius: 4em;
+    width: 50%;
+    height: 2em;
+    box-shadow: -10px 0 20px 5px #00b7ed, 10px 0 20px 5px #8f4b97;
+    -webkit-box-shadow: -10px 0 20px 5px #00b7ed, 10px 0 20px 5px #8f4b97;
+}
+
+.form button {
+    font-family: "Metropolis";
+    font-size: 150%;
+    border-radius: 4em;
+    margin: 3em;
+    padding-left: 2em;
+    padding-right: 2em;
+    height: 2.5em;
+    background-image: linear-gradient(to right, #00b7ed, #8f4b97);
+    border: thin;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    font-size: 150%;
+    color: white;
+}

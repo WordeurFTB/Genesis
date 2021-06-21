@@ -1,0 +1,103 @@
+@import url("./font.css");
+
+html {
+    background: linear-gradient(#00b7ed, #4264ad, #423e8e);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    text-align: center;
+}
+
+.centered-stage {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.stage {
+    background-color: #000000;
+    border: 0.3em solid #423e8e;
+    border-radius: 1em;
+}
+
+#holo-btn {
+    width: 7em;
+    height: 7em;
+    border-radius: 3.5em;
+    background-image: url("../src/hologram.ico");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    border: thin;
+    margin: 0;
+    position: absolute;
+    bottom: 5%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+#overlay {
+    position: fixed;
+    pointer-events: none;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000;
+    transition: opacity 0.2s linear;
+    opacity: 0;
+    z-index: 10;
+}
+
+#north, #south, #east, #west {
+    margin: 0;
+    position: absolute;
+    z-index: 11;
+    /*border:white 2px solid;*/
+}
+
+#north {
+    top: 0%;
+    left: 50%;
+    -ms-transform: translate(-50%, +25%) rotate(0deg);
+    transform: translate(-50%, +25%) rotate(0deg);
+}
+
+#south {
+    bottom: 0%;
+    right: 50%;
+    -ms-transform: translate(+50%, -25%) rotate(180deg);
+    transform: translate(+50%, -25%) rotate(180deg);
+}
+
+#east {
+    top: 50%;
+    right: 0%;
+    -ms-transform: translateY(-50%) rotate(90deg);
+    transform: translateY(-50%) rotate(90deg);
+}
+
+#west {
+    bottom: 50%;
+    left: 0%;
+    -ms-transform: translateY(+50%) rotate(270deg);
+    transform: translateY(+50%) rotate(270deg);
+}
+
+.shadow {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.custom {
+    width: 4em;
+    height: 4em;
+    border-radius: 1em;
+}
+
+button {
+    background-color: white;
+}
