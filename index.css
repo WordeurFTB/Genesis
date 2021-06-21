@@ -1,0 +1,26 @@
+@import url("./css/font.css");
+
+html {
+    background-color: #14182D;
+    background-size: 100% auto;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.title-logo {
+    width: 15%;
+    height: 15%;
+    margin-top: 48%;
+}
+
+.title {
+    position: absolute;
+    color: white;
+    font-size: 500%;
+    top: 40%;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
