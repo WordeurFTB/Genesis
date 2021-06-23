@@ -1,4 +1,3 @@
-markdown: kramdown
 # Genesis
 
 Genesis is an application platform that allows users to create, customize, and display holograms.
