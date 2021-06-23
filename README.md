@@ -9,9 +9,7 @@ We use a [Docker](https://github.com/nanoninja/docker-nginx-php-mysql) as server
 And there are two access points :
 
 Genesis' Web App : [APP](https://genesis-app.fr/)  
-<a href="https://genesis-app.fr/" target="_blank">APP</a>  
-Genesis' Database : [DB](http://genesis-app.fr:8080/)  
-<a href="http://genesis-app.fr:8080/" target="_blank">DB</a>
+Genesis' Database : [DB](http://genesis-app.fr:8080/)
 
 ## License
 
