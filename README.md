@@ -7,7 +7,7 @@ Genesis is an application platform that allows users to create, customize, and d
 We use a [Docker](https://github.com/nanoninja/docker-nginx-php-mysql) as server structure.
 And there are two access points :
 
-Genesis' Web App : [APP](https://genesis-app.fr/)
+Genesis' Web App : [APP](https://genesis-app.fr/)  
 Genesis' Database : [DB](http://genesis-app.fr:8080/)
 
 ## License
