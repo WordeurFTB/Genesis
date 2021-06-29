@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<title>GENESIS</title>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+		<link rel="icon" type="image/x-icon" href="../src/genesis_logo.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type="text/javascript" src="../lib/crypto-js.js"></script>
+		<script type="text/javascript" src="../lib/jquery.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/signup.css">
+	</head>
+	<body>
+        <div class="corner">
+            <a class="ft-metropolis" id="login-btn">Retour</a>
+        </div>
+        <img class="fixed pos-a" src="../src/genesis_logo.ico" />
+        <img class="fixed pos-b" src="../src/genesis_logo.ico" />
+        <img class="fixed pos-c" src="../src/genesis_logo.ico" />
+        <img class="fixed pos-d" src="../src/genesis_logo.ico" />
+		<p class="title ft-metropolis">Créer un<br>compte</p>
+        <div class="form">
+            <div class="form__group field" style="top:10em;">
+                <input type="text" class="form__field" placeholder="Nom" name="lastname" id='lastname' autocomplete="off" onkeyup="this.value = upper(this.value);" required />
+                <label for="lastname" class="form__label">Nom</label>
+            </div>
+            <div class="form__group field" style="top:11em;">
+                <input type="text" class="form__field" placeholder="Prénom" name="firstname" id='firstname' autocomplete="off" onkeyup="this.value = capitalize(this.value);" required />
+                <label for="firstname" class="form__label">Prénom</label>
+            </div>
+            <div class="form__group field" style="top:12em;">
+                <input type="text" class="form__field" placeholder="E-mail" name="email" id='email' autocomplete="off" onkeyup="this.value = lower(this.value);" required />
+                <label for="email" class="form__label">E-mail</label>
+            </div>
+            <div class="form__group field" style="top:13em;">
+                <input type="password" class="form__field" placeholder="Mot de passe" name="password" id='password' autocomplete="off" required />
+                <label for="password" class="form__label">Mot de passe</label>
+            </div>
+            <button id="register-btn">S'enregistrer</button>
+        </div>
+        <script type="text/javascript" src="../js/core.js"></script>
+    	<script type="text/javascript" src="../js/signup.js"></script>
+	</body>
+</html>

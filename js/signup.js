@@ -2,15 +2,17 @@ if (sessionStorage.getItem('genesis_config')) {
     if (localStorage.getItem('user_cache')) {
         window.location.replace('./home.html');
     } else {
-        $("#connect-btn").click(function() {
+        $("#register-btn").click(function() {
             $.ajax({
                 type: 'POST',
                 dataType: 'JSON',
                 url: JSON.parse(sessionStorage.getItem('genesis_config')).api_path,
                 data: JSON.stringify({
-                    "action" : "connect-user",
-                    "email" : $('#email').val(),
-                    "password" : hash($('#password').val())
+                    "action" : "create-user",
+                    "email" : lower($('#email').val()),
+                    "password" : hash($('#password').val()),
+                    "firstname" : capitalize($('#firstname').val()),
+                    "lastname" : upper($('#lastname').val())
                 }),
                 success: function(result) {
                     if (result.token) {
@@ -21,18 +23,30 @@ if (sessionStorage.getItem('genesis_config')) {
                 error: function(xhr, ajaxOptions, thrownError) {
                     $('#email').val('');
                     $('#password').val('');
+                    $('#firstname').val('');
+                    $('#lastname').val('');
                 }
             });
         });
-        $("#create-btn").click(function() {
-            redirect('./signup.html')
+        $("#login-btn").click(function() {
+            redirect('./login.html')
         });
     }
 } else {
     window.location.replace('../index.html');
 }
+function lower(txt) {
+    return txt.toLowerCase();
+}
+function upper(txt) {
+    return txt.toUpperCase();
+}
 function capitalize(txt) {
-    return txt[0].toUpperCase() + txt.slice(1).toLowerCase();
+    if (txt.length > 0) {
+        return txt[0].toUpperCase() + txt.slice(1).toLowerCase();
+    } else {
+        return txt;
+    }
 }
 function hash(string) {
     return CryptoJS.SHA3(string, { outputLength: 256 }).toString();

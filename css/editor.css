@@ -27,7 +27,7 @@ html {
     width: 7em;
     height: 7em;
     border-radius: 3.5em;
-    background-image: url("../src/hologram.ico");
+    background-image: url("../src/genesis_hologram.ico");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 70%;
@@ -64,6 +64,8 @@ html {
     left: 50%;
     -ms-transform: translate(-50%, +25%) rotate(0deg);
     transform: translate(-50%, +25%) rotate(0deg);
+    /*-ms-transform: translate(-50%, +50%) rotate(0deg);
+    transform: translate(-50%, +50%) rotate(0deg);*/
 }
 
 #south {
@@ -71,6 +73,8 @@ html {
     right: 50%;
     -ms-transform: translate(+50%, -25%) rotate(180deg);
     transform: translate(+50%, -25%) rotate(180deg);
+    /*-ms-transform: translate(+50%, -50%) rotate(180deg);
+    transform: translate(+50%, -50%) rotate(180deg);*/
 }
 
 #east {
@@ -96,6 +100,11 @@ html {
     width: 4em;
     height: 4em;
     border-radius: 1em;
+}
+.custom img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 button {

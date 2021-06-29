@@ -7,7 +7,7 @@ async function async() {
     let genesis_config = await loadConfig();
     saveConfig(genesis_config);
     if (localStorage.getItem('user_cache')) {
-        redirect('./app/editor.html');
+        redirect('./app/home.html');
     } else {
         redirect('./app/login.html');
     }

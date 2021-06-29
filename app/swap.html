@@ -1,0 +1,27 @@
+<button class="swap" onclick="swap()">SWAP</button>
+<script>
+    function swap() {
+        let doc = window.document;
+        let docEl = doc.documentElement;
+
+        let requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+        let cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+        if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+            requestFullScreen.call(docEl);
+        }
+        else {
+            cancelFullScreen.call(doc);
+        }
+    }
+</script>
+<style>
+    .swap {
+        font-family: "Metropolis";
+        font-size: 1.5em;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: 12;
+    }
+</style>

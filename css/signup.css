@@ -1,0 +1,153 @@
+@import url("./font.css");
+
+html {
+    background-color: #14182D;
+    background-size: 100% auto;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.title {
+    position: absolute;
+    color: white;
+    font-size: 300%;
+    top: 30%;
+    left: 0;
+    right: 0;
+    margin-left: 1em;
+    margin-right: auto;
+    text-align: left;
+}
+
+.form {
+    margin-top: 20%;
+}
+
+.form .field {
+    color: white;
+    font-size: 200%;
+}
+
+.form button {
+    font-family: "Metropolis";
+    font-size: 150%;
+    border-radius: 4em;
+    margin: 3em;
+    padding-left: 2em;
+    padding-right: 2em;
+    height: 2.5em;
+    background-image: linear-gradient(to right, #00b7ed, #8f4b97);
+    border: thin;
+    color: white;
+}
+
+.corner {
+    position: fixed;
+    text-align: left;
+    top: 3em;
+    left: 6em;
+
+}
+a {
+    text-decoration: none;
+    font-size: 150%;
+    color: white;
+}
+
+#register-btn {
+    margin-top: 20em;
+    margin-left: -5em;
+    position: absolute;
+}
+
+.fixed {
+    position: fixed;
+}
+.pos-a {
+    transform: rotate(-25deg);
+    top: 10em;
+    left: 3.5em;
+    width: 10em;
+    height: 10em;
+}
+.pos-b {
+    transform: rotate(-110deg);
+    top: 8.5em;
+    left: 14.5em;
+    width: 9em;
+    height: 9em;
+}
+.pos-c {
+    transform: rotate(-145deg);
+    top: 2em;
+    left: 20em;
+    width: 7.5em;
+    height: 7.5em;
+}
+.pos-d {
+    transform: rotate(-238deg);
+    top: -3em;
+    left: 21em;
+    width: 4.5em;
+    height: 4.5em;
+}
+
+/* Inputs */
+.form__group {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
+    width: 85%;
+}
+.form__field {
+    font-family: "Metropolis";
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid white;
+    outline: 0;
+    font-size: 1.5rem;
+    color: white;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #00B7ED, #8F4B97);
+    border-image-slice: 1;
+}
+.form__field::placeholder {
+    color: transparent;
+}
+.form__field:placeholder-shown ~ .form__label {
+    font-size: 1.5rem;
+    cursor: text;
+    top: 30px;
+}
+.form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1.2rem;
+    color: white;
+    font-family: "Metropolis";
+}
+.form__field:focus {
+    padding-bottom: 6px;
+    font-weight: 700;
+}
+.form__field:focus ~ .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 700;
+}
+.form__field:required, .form__field:invalid {
+    box-shadow: none;
+}

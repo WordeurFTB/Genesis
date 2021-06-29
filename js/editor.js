@@ -1,32 +1,18 @@
 let count = 0;
 let scenes = [];
 let url = new URLSearchParams(window.location.search);
-let choice = (url.get('choice')) ? parseInt(url.get('choice')) : 0;
-let shade = (url.get('shade')) ? String(url.get('shade')) : "FF4136";
+let hologram = (url.get('hologram')) ? parseInt(url.get('hologram')) : 0;
+let choice = (url.get('choice')) ? parseInt(url.get('choice')) : "sphere";
+let shade = (url.get('shade')) ? String(url.get('shade')) : "#FF4136";
+let form_tab = null;
+let color_tab = null;
+let hologram_tab = null;
+let pic_tab = ["../src/pics/headphone.gif", "../src/pics/smartphone.gif"];
 let data = [];
 if (sessionStorage.getItem('genesis_config')) {
     if (!localStorage.getItem('user_cache')) {
         window.location.replace('./login.html');
     } else {
-        // Récupérer les dimensions de l'écran
-        let ratio = screen.width * 0.75;
-
-        // Générer la scène de l'hologramme
-        $("body").append('<canvas id="stage" height="' + ratio + '" width="' + ratio + '"></canvas>');
-        $("#stage").addClass(Array('centered-stage', 'stage'));
-        let scene = new THREE.Scene();
-        let camera = new THREE.PerspectiveCamera(50, 1);
-        /*camera.position.z = 250;
-        camera.lookAt(scene.position);*/
-        let renderer = new THREE.WebGLRenderer({antialias: true, canvas: document.getElementById("stage")});
-        renderer.autoClear = true;
-        data['stage'] = {"scene": scene, "camera": camera, "renderer": renderer};
-        if (choice < 7) {
-            drawGeometry(scene, camera, renderer);
-        } else {
-
-        }
-
         // Générer le bouton de visualisation
         $("body").append('<button id="holo-btn"></button>');
         $('#holo-btn').click(function() {
@@ -37,44 +23,124 @@ if (sessionStorage.getItem('genesis_config')) {
             hideDesign();
         });
 
-        // Génerer le contenu de la visualisation
-        createShadow();
-
         // Générer la customisation
         $("body").append('<table style="width:100%;text-align:center;"><tr id="form"></tr><tr><td>&nbsp;</td></tr><tr id="color"></tr></table>');
-            // Choix de la forme
-        for (var i = 0; i < 7; i++) {
-            $("#form").append('<td><button class="custom" style="font-size:2vmin;" onclick="change(' + i + ',null)">' + (i + 1) + '</button></td>');
-        }
-            // Choix de la couleur
-        let color_tab = ["FF4136", "FF851B", "FFDC00", "2ECC40", "0074D9", "B10DC9", "AAAAAA"];
-        for (var i = 0; i < color_tab.length; i++) {
-            $("#color").append('<td><button class="custom" style="background-color:#' + color_tab[i] + ';" onclick="change(null,\'' + color_tab[i] + '\')"></button></td>');
-        }
 
-        /*$("#stage").css('transform','scale(0.5) translate(-100%, -100%)');*/
+        // Récupération des données de l'hologramme
+        load();
     }
 } else {
     window.location.replace('../index.html');
 }
+function getForms() { 
+    return $.ajax({
+        type: 'POST',
+        dataType: 'JSON',
+        url: JSON.parse(sessionStorage.getItem('genesis_config')).api_path,
+        data: JSON.stringify({
+            "action" : "get-forms",
+            "token" : JSON.parse(localStorage.getItem('user_cache')).token
+        }),
+        success: function(result) {
+            form_tab = result;
+            let keys = Object.keys(form_tab);
+            for (const key in keys) {
+                $("#form").append('<td><button class="custom" onclick="change(\'' + form_tab[key].code + '\',null)"><img src="../src/forms/' + form_tab[key].code + '.ico" /></button></td>');
+            }
+            return true;
+        }
+    });
+};
+function getColors() { 
+    return $.ajax({
+        type: 'POST',
+        dataType: 'JSON',
+        url: JSON.parse(sessionStorage.getItem('genesis_config')).api_path,
+        data: JSON.stringify({
+            "action" : "get-colors",
+            "token" : JSON.parse(localStorage.getItem('user_cache')).token
+        }),
+        success: function(result) {
+            color_tab = result;
+            let keys = Object.keys(color_tab);
+            for (const key in keys) {
+                $("#color").append('<td><button class="custom" style="background-color:' + color_tab[key].value + ';" onclick="change(null,\'' + color_tab[key].value + '\')"></button></td>');
+            }
+            return true;
+        }
+    });
+};
+function getHologram() {
+    return $.ajax({
+        type: 'POST',
+        dataType: 'JSON',
+        url: JSON.parse(sessionStorage.getItem('genesis_config')).api_path,
+        data: JSON.stringify({
+            "action" : "get-hologram",
+            "hologram" : hologram,
+            "token" : JSON.parse(localStorage.getItem('user_cache')).token
+        }),
+        success: function(result) {
+            hologram_tab = result;
+            // ...
+            return true;
+        }
+    });
+}
+async function load() {
+    try {
+        form_tab = await getForms();
+    } catch(e) {
+        // ***
+    }
+    try {
+        form_tab = await getColors();
+    } catch(e) {
+        // ***
+    }
+    draw();
+}
+function draw() {
+    // Récupérer les dimensions de l'écran
+    let ratio = screen.width * 0.75;
+
+    // Générer la scène de l'hologramme
+    $("body").append('<canvas id="stage" height="' + ratio + '" width="' + ratio + '"></canvas>');
+    $("#stage").addClass(Array('centered-stage', 'stage'));
+    let scene = new THREE.Scene();
+    let camera = new THREE.PerspectiveCamera(50, 1);
+    /*camera.position.z = 250;
+    camera.lookAt(scene.position);*/
+    let renderer = new THREE.WebGLRenderer({antialias: true, canvas: document.getElementById("stage")});
+    renderer.autoClear = true;
+    data['stage'] = {"scene": scene, "camera": camera, "renderer": renderer};
+    if ((choice !== 0) && (choice !== 1)) {
+        drawGeometry(scene, camera, renderer);
+    } else {
+        //drawPic(scene, pic_tab[choice]);
+    }
+
+    // Génerer le contenu de la visualisation
+    createShadow();
+}
 function drawGeometry(scene, camera, renderer) {
     let geometry;
-    if (choice === 0) {
+    if (choice === 'sphere') {
         geometry = new THREE.SphereGeometry(1, 16, 16);
-    } else if (choice === 1) {
+    } else if (choice === 'ring') {
         geometry = new THREE.TorusGeometry(1, 0.2, 10, 16);
-    } else if (choice === 2) {
+    } else if (choice === 'pyramid') {
         geometry = new THREE.ConeGeometry(1, 1.4, 4);
-    } else if (choice === 3) {
+    } else if (choice === 'cube') {
         geometry = new THREE.BoxGeometry(1.4, 1.4, 1.4);
-    } else if (choice === 4) {
+    } else if (choice === 'octahedron') {
         geometry = new THREE.OctahedronGeometry(1.2, 0);
-    } else if (choice === 5) {
+    } else if (choice === 'icosahedron') {
         geometry = new THREE.IcosahedronGeometry(1.2, 0);
-    } else if (choice === 6) {
+    } else if (choice === 'dodecahedron') {
         geometry = new THREE.DodecahedronGeometry(1.2, 0);
     }
-    let color = new THREE.Color("#" + shade);
+    let color = new THREE.Color(shade);
     let material = new THREE.MeshBasicMaterial({color: color.getHex()});
     let mesh = new THREE.Mesh(geometry, material);
     mesh.rotation.x = 10;
@@ -119,13 +185,13 @@ function drawText(scene, camera, renderer) {
         } );
     } );
 }
-function drawShape(stage) {
+function drawPic(stage, pic) {
     // Récupérer les dimensions de l'écran
     let ratio = screen.width * 0.75;
 
     scenes.push(stage);
     const myGif = GIFGroover();
-    myGif.src = "../src/gem.gif";
+    myGif.src = pic;
     myGif.onload = gifLoad;
 }
 function gifLoad(event) {
@@ -177,6 +243,10 @@ function change(choice_, shade_) {
         while(data[key].scene.children.length > 0){ 
             data[key].scene.remove(data[key].scene.children[0]); 
         }
-        drawGeometry(data[key].scene, data[key].camera, data[key].renderer);
+        if ((choice !== 0) && (choice !== 1)) {
+            drawGeometry(data[key].scene, data[key].camera, data[key].renderer);
+        } else {
+            //drawPic(data[key].scene, pic_tab[choice]);
+        }
     }
 }
